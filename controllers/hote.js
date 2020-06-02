@@ -54,6 +54,19 @@ module.exports = (app) => {
     }
     //return la function  getall appeller juste avant
 
+    function many(req, res) {
+        Hote.instertMany(arr, function(err, hotes) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(hotes);
+            }
+            //return la function  getall appeller juste avant
 
-    return { getAll, create, update, getById, remove };
+        });
+    }
+    return { getAll, create, update, getById, remove, many };
+
+
+    
 };
