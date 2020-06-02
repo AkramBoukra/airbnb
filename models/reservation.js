@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var reservationSchema = new Schema({
-    arrivée: Date,
-    départ: Date,
+    arrivee: Date,
+    depart: Date,
     equipements: [{
         type: Schema.Types.ObjectId,
         ref: "Equipement",

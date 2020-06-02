@@ -1,18 +1,15 @@
-const mongoose = require("mongoose");
-let Schema = mongoose.Schema;
+const router = require("express").Router();
 
-let userSchema = new Schema({   // Ici on définit les clés et les types de data.
-    nom : String,
-    prenom : String,
-    email : String,
-    motDePasse : String,
-    adresse : String,
-    dateDeNaissance : Date,
-    noDeTel : String,
-    reservations : [{ 
-        type: Schema.Types.ObjectId,
-        ref: "Reservation",
-    },],
-});
+module.exports = (app) => {
+    router.get("/", app.controllers.user.getAll);
 
-module.exports = mongoose.model("User", userSchema); 
+    router.post("/create", app.controllers.user.create);
+
+    router.post("/getById", app.controllers.user.getById);
+
+    router.post("/update", app.controllers.user.update);
+
+    router.post("/remove", app.controllers.user.remove);
+
+    return router;
+};

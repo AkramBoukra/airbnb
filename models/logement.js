@@ -5,11 +5,17 @@ var logementSchema = new Schema({
     titre: String,
     urlPhotos: [String],
     descriptions: String,
-    equipements: [Equipement],
+    equipements: [{
+        type: Schema.Types.ObjectId,
+        ref: "Equipement",
+    }, ],
     adresse: String,
     typesLogement: [String],
-    hote: Hote,
-    prixPourUneNuit: Number
+    hote: [{
+        type: Schema.Types.ObjectId,
+        ref: "Hote",
+    }, ],
+    prix: Number
 
 });
 
