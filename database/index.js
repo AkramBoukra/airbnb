@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 module.exports = (app) => {
     mongoose.connect(
-        "mongodb://localhost:27017/spotify", {
+        "mongodb://localhost:27017/airbnb", {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         },
