@@ -12,5 +12,8 @@ module.exports = (app) => {
 
     router.post("/delete", app.controllers.reservation.remove);
 
+    router.post("/many", app.controllers.reservation.many);
+
+   
     return router;
 };

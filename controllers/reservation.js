@@ -54,6 +54,18 @@ module.exports = (app) => {
     }
     //return la function  getall appeller juste avant
 
+    function many(req, res) {
+        Reservation.instertMany(arr, function(err, reservations) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(reservations);
+            }
+            //return la function  getall appeller juste avant
 
-    return { getAll, create, update, getById, remove };
+        });
+    }
+
+
+    return { getAll, create, update, getById, remove, many };
 };

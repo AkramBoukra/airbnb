@@ -13,6 +13,8 @@ module.exports = (app) => {
 
     router.post("/delete", app.controllers.hote.remove);
 
+    router.post("/many", app.controllers.hote.many);
+
     return router;
 };
 

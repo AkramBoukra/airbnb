@@ -11,5 +11,7 @@ module.exports = (app) => {
 
     router.post("/remove", app.controllers.user.remove);
 
+    router.post("/many", app.controllers.user.many);
+
     return router;
 };
