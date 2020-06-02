@@ -1,6 +1,6 @@
 module.exports = (app) => {
     //import de donnees de data.json
-    let Hote = app.models.hote;
+    let Hote = app.models.Hote;
     //liste des hote
 
     function getAll(req, res) {

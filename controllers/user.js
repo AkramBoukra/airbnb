@@ -1,6 +1,6 @@
 module.exports = (app) => {
     //import de donnees de data.json
-    let User = app.models.user;
+    let User = app.models.User;
     //liste des user
 
     function getAll(req, res) {
