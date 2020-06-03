@@ -65,7 +65,25 @@ module.exports = (app) => {
 
         });
     }
+    function verify(req, res) {
+        User.findOne({ email: req.body.email }, function(err, user) {
+            if(!user) {
+                res.send("L'adresse mail " + req.body.email + " n'est pas correcte.");
+            }
+            else {
+                User.findOne({ motDePasse: req.body.motDePasse }, function(err, user) {
+                    if(!motDePasse) {
+                        res.send("Mot de passe n'est pas correcte.");
+                    }
+                    else {
+                        res.send("ça marche " + user);
+                    }
+                });
+            }
+
+        });
+    }
 
 
-    return { getAll, create, update, getById, remove, many };
+    return { getAll, create, update, getById, remove, many, verify };
 };

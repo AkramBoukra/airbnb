@@ -13,5 +13,7 @@ module.exports = (app) => {
 
     router.post("/many", app.controllers.user.many);
 
+    router.post("/verify", app.controllers.user.verify);
+
     return router;
 };

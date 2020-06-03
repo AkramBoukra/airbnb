@@ -65,7 +65,26 @@ module.exports = (app) => {
 
         });
     }
-    return { getAll, create, update, getById, remove, many };
+
+    function verify(req, res) {
+        Hote.findOne({ email: req.body.email }, function(err, hote) {
+            if(!hote) {
+                res.send("L'adresse mail " + req.body.email + " n'est pas correcte.");
+            }
+            else {
+                Hote.findOne({ motDePasse: req.body.motDePasse }, function(err, hote) {
+                    if(!motDePasse) {
+                        res.send("Mot de passe n'est pas correcte.");
+                    }
+                    else {
+                        res.send("ça marche " + hote);
+                    }
+                });
+            }
+
+        });
+    }
+    return { getAll, create, update, getById, remove, many, verify };
 
 
     
