@@ -4,7 +4,7 @@ module.exports = (app) => {
     //liste des user
 
     function getAll(req, res) {
-        User.find({}, (err, docs) => {
+        User.find({}, (err, user) => {
             if (err) {
                 res.send(err);
             } else {

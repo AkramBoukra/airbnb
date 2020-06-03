@@ -4,7 +4,7 @@ module.exports = (app) => {
     //liste des hote
 
     function getAll(req, res) {
-        Hote.find({}, (err, docs) => {
+        Hote.find({}, (err, hote) => {
             if (err) {
                 res.send(err);
             } else {

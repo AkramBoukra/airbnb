@@ -4,7 +4,7 @@ module.exports = (app) => {
     //liste des reservation
 
     function getAll(req, res) {
-        Logement.find({}, (err, docs) => {
+        Logement.find({}, (err, logement) => {
             if (err) {
                 res.send(err);
             } else {
