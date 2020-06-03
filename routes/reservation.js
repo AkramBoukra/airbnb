@@ -14,6 +14,6 @@ module.exports = (app) => {
 
     router.post("/many", app.controllers.reservation.many);
 
-   
+
     return router;
 };

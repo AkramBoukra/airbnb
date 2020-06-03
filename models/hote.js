@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
-let hoteSchema = new Schema({ // Ici on définit les clés et les types de data.
+let hoteSchema = new Schema({
     nom: String,
     prenom: String,
     email: String,
@@ -12,7 +12,7 @@ let hoteSchema = new Schema({ // Ici on définit les clés et les types de data.
     logements: [{
         type: Schema.Types.ObjectId,
         ref: "Logement",
-    }, ],
+    },],
     langues: String,
 });
 

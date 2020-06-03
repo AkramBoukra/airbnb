@@ -1,8 +1,5 @@
 module.exports = (app) => {
-    //import de donnees de data.json
     let Hote = app.models.Hote;
-    //liste des hote
-
     function getAll(req, res) {
         Hote.find({}, (err, hote) => {
             if (err) {
@@ -14,7 +11,7 @@ module.exports = (app) => {
     }
 
     function getById(req, res) {
-        Hote.findById(req.body.id, function(err, hote) {
+        Hote.findById(req.body.id, function (err, hote) {
             if (err) {
                 res.send(err);
             } else {
@@ -24,7 +21,7 @@ module.exports = (app) => {
     }
 
     function create(req, res) {
-        Hote.create(req.body, function(err, hote) {
+        Hote.create(req.body, function (err, hote) {
             if (err) {
                 res.send(err);
             } else {
@@ -34,7 +31,7 @@ module.exports = (app) => {
     }
 
     function update(req, res) {
-        Hote.findByIdAndUpdate(req.body.id, req.body, function(err, hote) {
+        Hote.findByIdAndUpdate(req.body.id, req.body, function (err, hote) {
             if (err) {
                 res.send(err);
             } else {
@@ -44,7 +41,7 @@ module.exports = (app) => {
     }
 
     function remove(req, res) {
-        Hote.findByIdAndRemove(req.body.id, function(err, hote) {
+        Hote.findByIdAndRemove(req.body.id, function (err, hote) {
             if (err) {
                 res.send(err);
             } else {
@@ -52,28 +49,25 @@ module.exports = (app) => {
             }
         });
     }
-    //return la function  getall appeller juste avant
-
     function many(req, res) {
-        Hote.instertMany(arr, function(err, hotes) {
+        Hote.instertMany(arr, function (err, hotes) {
             if (err) {
                 res.send(err);
             } else {
                 res.send(hotes);
             }
-            //return la function  getall appeller juste avant
 
         });
     }
 
     function verify(req, res) {
-        Hote.findOne({ email: req.body.email }, function(err, hote) {
-            if(!hote) {
+        Hote.findOne({ email: req.body.email }, function (err, hote) {
+            if (!hote) {
                 res.send("L'adresse mail " + req.body.email + " n'est pas correcte.");
             }
             else {
-                Hote.findOne({ motDePasse: req.body.motDePasse }, function(err, hote) {
-                    if(!motDePasse) {
+                Hote.findOne({ motDePasse: req.body.motDePasse }, function (err, hote) {
+                    if (!motDePasse) {
                         res.send("Mot de passe n'est pas correcte.");
                     }
                     else {
@@ -87,5 +81,5 @@ module.exports = (app) => {
     return { getAll, create, update, getById, remove, many, verify };
 
 
-    
+
 };

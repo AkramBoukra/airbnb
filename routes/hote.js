@@ -2,7 +2,6 @@ const router = require("express").Router();
 
 module.exports = (app) => {
 
-
     router.get("/", app.controllers.hote.getAll);
 
     router.post("/create", app.controllers.hote.create);
@@ -17,5 +16,3 @@ module.exports = (app) => {
 
     return router;
 };
-
-//  Donc ils commencent tous avec localhost:3000/hote

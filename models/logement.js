@@ -8,13 +8,13 @@ var logementSchema = new Schema({
     equipements: [{
         type: Schema.Types.ObjectId,
         ref: "Equipement",
-    }, ],
+    },],
     adresse: String,
     typesLogement: [String],
     hote: [{
         type: Schema.Types.ObjectId,
         ref: "Hote",
-    }, ],
+    },],
     prix: Number
 
 });

@@ -1,7 +1,5 @@
 module.exports = (app) => {
-    //import de donnees de data.json
     let Logement = app.models.Logement;
-    //liste des reservation
 
     function getAll(req, res) {
         Logement.find({}, (err, logement) => {
@@ -14,17 +12,21 @@ module.exports = (app) => {
     }
 
     function getById(req, res) {
-        Logement.findById(req.body.id, function(err, logement) {
+        Logement.findById(req.body.id, function (err, logement) {
             if (err) {
                 res.send(err);
             } else {
                 res.send(logement);
             }
-        });
+        }).
+            populate({
+                path: 'hote',
+                select: 'nom prenom email noDeTel langues -_id '
+            });
     }
 
     function create(req, res) {
-        Logement.create(req.body, function(err, logement) {
+        Logement.create(req.body, function (err, logement) {
             if (err) {
                 res.send(err);
             } else {
@@ -34,7 +36,7 @@ module.exports = (app) => {
     }
 
     function update(req, res) {
-        Logement.findByIdAndUpdate(req.body.id, req.body, function(err, logement) {
+        Logement.findByIdAndUpdate(req.body.id, req.body, function (err, logement) {
             if (err) {
                 res.send(err);
             } else {
@@ -44,7 +46,7 @@ module.exports = (app) => {
     }
 
     function remove(req, res) {
-        Logement.findByIdAndRemove(req.body.id, function(err, logement) {
+        Logement.findByIdAndRemove(req.body.id, function (err, logement) {
             if (err) {
                 res.send(err);
             } else {
@@ -52,20 +54,17 @@ module.exports = (app) => {
             }
         });
     }
-    //return la function  getall appeller juste avant
 
     function many(req, res) {
-        Logement.instertMany(arr, function(err, logements) {
+        Logement.instertMany(arr, function (err, logements) {
             if (err) {
                 res.send(err);
             } else {
                 res.send(logements);
             }
-            //return la function  getall appeller juste avant
-
         });
     }
 
 
-    return { getAll, create, update, getById, remove, many };
+    return { getAll, create, update, getById, remove, many, };
 };

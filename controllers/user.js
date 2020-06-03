@@ -1,8 +1,5 @@
 module.exports = (app) => {
-    //import de donnees de data.json
     let User = app.models.User;
-    //liste des user
-
     function getAll(req, res) {
         User.find({}, (err, user) => {
             if (err) {
@@ -14,7 +11,7 @@ module.exports = (app) => {
     }
 
     function getById(req, res) {
-        User.findById(req.body.id, function(err, user) {
+        User.findById(req.body.id, function (err, user) {
             if (err) {
                 res.send(err);
             } else {
@@ -24,7 +21,7 @@ module.exports = (app) => {
     }
 
     function create(req, res) {
-        User.create(req.body, function(err, user) {
+        User.create(req.body, function (err, user) {
             if (err) {
                 res.send(err);
             } else {
@@ -34,7 +31,7 @@ module.exports = (app) => {
     }
 
     function update(req, res) {
-        User.findByIdAndUpdate(req.body.id, req.body, function(err, user) {
+        User.findByIdAndUpdate(req.body.id, req.body, function (err, user) {
             if (err) {
                 res.send(err);
             } else {
@@ -44,7 +41,7 @@ module.exports = (app) => {
     }
 
     function remove(req, res) {
-        User.findByIdAndRemove(req.body.id, function(err, user) {
+        User.findByIdAndRemove(req.body.id, function (err, user) {
             if (err) {
                 res.send(err);
             } else {
@@ -52,27 +49,25 @@ module.exports = (app) => {
             }
         });
     }
-    //return la function  getall appeller juste avant
-
     function many(req, res) {
-       User.instertMany(arr, function(err, users) {
+        User.instertMany(arr, function (err, users) {
             if (err) {
                 res.send(err);
             } else {
                 res.send(users);
             }
-            //return la function  getall appeller juste avant
+
 
         });
     }
     function verify(req, res) {
-        User.findOne({ email: req.body.email }, function(err, user) {
-            if(!user) {
+        User.findOne({ email: req.body.email }, function (err, user) {
+            if (!user) {
                 res.send("L'adresse mail " + req.body.email + " n'est pas correcte.");
             }
             else {
-                User.findOne({ motDePasse: req.body.motDePasse }, function(err, user) {
-                    if(!motDePasse) {
+                User.findOne({ motDePasse: req.body.motDePasse }, function (err, user) {
+                    if (!motDePasse) {
                         res.send("Mot de passe n'est pas correcte.");
                     }
                     else {

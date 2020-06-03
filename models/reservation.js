@@ -7,11 +7,11 @@ var reservationSchema = new Schema({
     equipements: [{
         type: Schema.Types.ObjectId,
         ref: "Equipement",
-    }, ],
+    },],
     totalPrice: Number,
     logement: [{
         type: Schema.Types.ObjectId,
         ref: "Logement",
-    }, ],
+    },],
 });
 module.exports = mongoose.model("Reservation", reservationSchema)
